@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import axios from 'axios'
 import Weather from './components/Weather'
+import Loader from './components/Loader'
 
 function App() {
   const [weatherInfo, setWeatherInfo] = useState(null)
@@ -24,8 +25,8 @@ function App() {
   }, [])
 
   return (
-    <main className="bg-scatteredCloudDay min-h-screen text-white flex justify-center items-center font-principal-font p-3 ">
-      <Weather weatherInfo={weatherInfo} />
+    <main className="bg-scatteredCloudDay bg-center min-h-screen text-black flex justify-center items-center font-principal-font p3">
+      {weatherInfo ? <Weather weatherInfo={weatherInfo} /> : <Loader />}
     </main>
   )
 }

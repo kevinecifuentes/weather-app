@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        clearSkyDay: 'url()',
+        clearSkyDay: '',
         clearSkyNight: 'url()',
         scatteredCloudDay: 'url(/images/scatteredCloudsDay.jpg)',
         scatteredCloudNight: 'url()',

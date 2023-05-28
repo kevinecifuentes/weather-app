@@ -1,8 +1,11 @@
 import { useState } from 'react'
 import { kelvinToCelsius, kelvinToFaharenheit } from '../func/converter'
+import './styles/button.css'
 
-const weatherImg = {
-  '01d': '/images/weather/clearSky-d.png',
+export const weatherImg = {
+  '01d': {
+    weatherIcon: '/images/weather/clearSky',
+  },
   '01n': '/images/weather/clearSky-n.png',
   '02d': '/images/weather/fewClouds-d.png',
   '02n': '/images/weather/fewClouds-n.png',
@@ -34,10 +37,10 @@ const Weather = ({ weatherInfo }) => {
         {weatherInfo?.name}, {weatherInfo?.sys.country}
       </h2>
 
-      <section className="grid gap-4 sm:grid-cols-[1fr_auto]">
+      <section className="grid gap-5 sm:grid-cols-[1fr_auto] m-4">
         {/* Sección arriba  */}
-        <article className="bg-white/40 p-4 rounded-3xl grid grid-cols-2 items-center gap-2">
-          <h3 className="col-span-2 capitalize">
+        <article className="bg-white/50 p-4 rounded-3xl grid grid-cols-2 items-center grid-rows-[1fr_5fr] shadow-lg shadow-slate-600">
+          <h3 className="col-span-2 capitalize ">
             {weatherInfo?.weather[0].description}
           </h3>
 
@@ -52,15 +55,16 @@ const Weather = ({ weatherInfo }) => {
           </div>
         </article>
         {/* Sección abajo     */}
-        <section className="bg-white/40 p-4 py-6 rounded-3xl grid grid-cols-3 justify-items-center items-center sm:grid-cols-1 sm:items-center">
-          <article className="flex gap-2 sm:grid-cols-1 sm:items-center">
+        <section className="bg-white/40 p-6 py-6 rounded-3xl grid grid-cols-3 justify-items-center items-start sm:grid-cols-1 sm:gap-5 sm:items-start sm:justify-items-center shadow-lg shadow-slate-600">
+          <article className="flex gap-2 sm:grid-cols-1 sm:items-center sm:border-b-2 sm:border-black/30 sm:p-2 ">
             <div>
               <img src="/images/icons/wind.png" alt="" />
             </div>
             <span>{weatherInfo?.wind.speed}m/s</span>
+            <div className=""></div>
           </article>
 
-          <article className="flex gap-2 sm:grid-cols-1 sm:items-center">
+          <article className="flex gap-2 sm:grid-cols-1 sm:items-center sm:border-b-2 sm:border-black/30 sm:p-2">
             <div>
               <img src="/images/icons/humidity.png" alt="" />
             </div>
@@ -75,8 +79,15 @@ const Weather = ({ weatherInfo }) => {
           </article>
         </section>
       </section>
-
-      <button onClick={handleChangeTemp}>Change F / C</button>
+      <div>
+        <button
+          className="button type1"
+          // className="border-2 h-12 w-52 relative bg-transparent cursor-pointer overflow-hidden rounded-3xl text-gray-800 "
+          onClick={handleChangeTemp}
+        >
+          <span className="btn-txt">Change °F / °C</span>
+        </button>
+      </div>
     </section>
   )
 }
