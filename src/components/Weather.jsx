@@ -31,7 +31,7 @@ const Weather = ({ weatherInfo, handleSubmit }) => {
   }
 
   return (
-    <section className="text-center grid gap-6">
+    <section className="relative text-center grid gap-6">
       <section className="flex items-center justify-center">
         <form onSubmit={handleSubmit}>
           <input
@@ -40,7 +40,7 @@ const Weather = ({ weatherInfo, handleSubmit }) => {
             className="pl-2 rounded-lg bg-white/40 outline-none placeholder:text-black/60"
             type="text"
           />
-          <button className="ml-2 h-7 w-20 bg-black/40 rounded-2xl ">
+          <button className="ml-2 w-20 p-1 py-1 text-white bg-black/40 rounded-2xl hover:bg-black">
             Search
           </button>
         </form>
@@ -93,7 +93,7 @@ const Weather = ({ weatherInfo, handleSubmit }) => {
       </section>
       <div>
         <button className="button type1" onClick={handleChangeTemp}>
-          <span className="btn-txt">Change °F / °C</span>
+          <span className="btn-txt">Change °F/°C</span>
         </button>
       </div>
     </section>

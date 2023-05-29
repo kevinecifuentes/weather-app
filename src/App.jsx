@@ -4,26 +4,26 @@ import axios from 'axios'
 import Weather from './components/Weather'
 import Loader from './components/Loader'
 
-// const backgroundImg = {
-//   '01d':
-// '01n':
-// '02d':
-// '02n':
-// '03d':
-// '03n':
-// '04d':
-// '04n':
-// '09d':
-// '09n':
-// '10d':
-// '10n':
-// '11d':
-// '11n':
-// '13d':
-// '13n':
-// '50d':
-// '50n':
-// }
+const backgroundImg = {
+  '01d': '/images/clearSky.jpg',
+  '01n': '/images/clearSkyNight.jpg',
+  '02d': '/images/fewClouds.jpg',
+  '02n': '/images/fewClouds.jpg',
+  '03d': '/images/parcialNublado.jpg',
+  '03n': '/images/parcialNubladoNight.jpg',
+  '04d': '/images/muyNublado.jpg',
+  '04n': '/images/muyNublado.jpg',
+  '09d': '/images/rain.jpg',
+  '09n': '/images/rain.jpg',
+  '10d': '/images/aguacero.jpg',
+  '10n': '/images/aguacero.jpg',
+  '11d': '/images/thunderstrom.jpg',
+  '11n': '/images/thunderstrom.jpg',
+  '13d': '/images/snow2.jpg',
+  '13n': '/images/snow2.jpg',
+  '50d': '/images/ventoso.jpg',
+  '50n': '/images/ventoso.jpg',
+}
 
 function App() {
   const [weatherInfo, setWeatherInfo] = useState(null)
@@ -36,30 +36,7 @@ function App() {
 
     axios
       .get(URL)
-      .then(({ data }) => {
-        let newData = data
-        newData.weatherImage = ''
-        if (data.weather[0].icon === '01d') {
-          newData.weatherImage = 'bg-clearBg'
-        }
-        if (data.weather[0].icon === '01n') {
-          newData.weatherImage = 'bg-rainBg'
-        }
-        if (data.weather[0].main === 'Clouds') {
-          newData.weatherImage = 'bg-cloudsBg'
-        }
-        if (data.weather[0].main === 'Snow') {
-          newData.weatherImage = 'bg-snowBg'
-        }
-        if (data.weather[0].main === 'Thunderstorm') {
-          newData.weatherImage = 'bg-thunderstromBg'
-        }
-        if (data.weather[0].main === 'Rain') {
-          newData.weatherImage = 'bg-rainBg'
-        }
-        setWeatherInfo(newData)
-        return newData
-      })
+      .then(({ data }) => setWeatherInfo(data))
       .catch((err) => console.log(err))
   }
 
@@ -72,30 +49,7 @@ function App() {
 
     axios
       .get(URL)
-      .then(({ data }) => {
-        let newData = data
-        newData.weatherImage = ''
-        if (data.weather[0].icon === '01d') {
-          newData.weatherImage = 'bg-clearBg'
-        }
-        if (data.weather[0].icon === '01n') {
-          newData.weatherImage = 'bg-rainBg'
-        }
-        if (data.weather[0].main === 'Clouds') {
-          newData.weatherImage = 'bg-cloudsBg'
-        }
-        if (data.weather[0].main === 'Snow') {
-          newData.weatherImage = 'bg-snowBg'
-        }
-        if (data.weather[0].main === 'Thunderstorm') {
-          newData.weatherImage = 'bg-thunderstromBg'
-        }
-        if (data.weather[0].main === 'Rain') {
-          newData.weatherImage = 'bg-rainBg'
-        }
-        setWeatherInfo(newData)
-        return newData
-      })
+      .then(({ data }) => setWeatherInfo(data))
       .catch((err) => console.log(err))
   }
 
@@ -104,11 +58,14 @@ function App() {
   }, [])
 
   return (
-    <main
-      className={`${
-        weatherInfo?.weatherImage || ''
-      } bg-center min-h-screen text-black flex justify-center items-center font-principal-font p3`}
-    >
+    <main className="relative min-h-screen text-black flex justify-center items-center font-principal-font p3">
+      <div className="absolute bg-cover bg-center w-full h-full">
+        <img
+          className="w-full h-full object-cover"
+          src={backgroundImg[weatherInfo?.weather[0].icon]}
+          alt=""
+        />
+      </div>
       {weatherInfo ? (
         <Weather weatherInfo={weatherInfo} handleSubmit={handleSubmit} />
       ) : (
