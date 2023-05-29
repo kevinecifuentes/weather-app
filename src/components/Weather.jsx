@@ -3,9 +3,7 @@ import { kelvinToCelsius, kelvinToFaharenheit } from '../func/converter'
 import './styles/button.css'
 
 export const weatherImg = {
-  '01d': {
-    weatherIcon: '/images/weather/clearSky',
-  },
+  '01d': '/images/weather/clearSky-d.png',
   '01n': '/images/weather/clearSky-n.png',
   '02d': '/images/weather/fewClouds-d.png',
   '02n': '/images/weather/fewClouds-n.png',
@@ -22,9 +20,10 @@ export const weatherImg = {
   '13d': '/images/weather/snow.png',
   '13n': '/images/weather/snow.png',
   '50d': '/images/weather/mist.png',
+  '50n': '/images/weather/mist.png',
 }
 
-const Weather = ({ weatherInfo }) => {
+const Weather = ({ weatherInfo, handleSubmit }) => {
   const [isCelsius, setIsCelsius] = useState(true)
 
   const handleChangeTemp = () => {
@@ -33,6 +32,19 @@ const Weather = ({ weatherInfo }) => {
 
   return (
     <section className="text-center grid gap-6">
+      <section className="flex items-center justify-center">
+        <form onSubmit={handleSubmit}>
+          <input
+            id="city"
+            placeholder="Write a city"
+            className="pl-2 rounded-lg bg-white/40 outline-none placeholder:text-black/60"
+            type="text"
+          />
+          <button className="ml-2 h-7 w-20 bg-black/40 rounded-2xl ">
+            Search
+          </button>
+        </form>
+      </section>
       <h2 className="font-bold text-2xl">
         {weatherInfo?.name}, {weatherInfo?.sys.country}
       </h2>
@@ -80,11 +92,7 @@ const Weather = ({ weatherInfo }) => {
         </section>
       </section>
       <div>
-        <button
-          className="button type1"
-          // className="border-2 h-12 w-52 relative bg-transparent cursor-pointer overflow-hidden rounded-3xl text-gray-800 "
-          onClick={handleChangeTemp}
-        >
+        <button className="button type1" onClick={handleChangeTemp}>
           <span className="btn-txt">Change °F / °C</span>
         </button>
       </div>

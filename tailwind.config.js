@@ -4,15 +4,12 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        clearSkyDay: '',
-        clearSkyNight: 'url()',
-        scatteredCloudDay: 'url(/images/scatteredCloudsDay.jpg)',
-        scatteredCloudNight: 'url()',
-        cloudyDay: 'url()',
-        cloudyNight: 'url()',
-        fogDay: 'url()',
-        fogNight: 'url()',
-        hailDay: 'url()',
+        clearBg: 'url(/images/clear.jpg)',
+        cloudsBg: 'url(/images/clouds.jpg)',
+        drizzleBg: 'url(/images/drizzle.jpg)',
+        rainBg: 'url(/images/rain.jpg)',
+        snowBg: 'url(/images/snow.jpg)',
+        thunderstromBg: 'url(/images/thunderstrom.jpg)',
       },
       fontFamily: {
         'principal-font': ['Lato', 'sans-serif'],
